@@ -5,19 +5,15 @@ namespace App\Models;
 use App\Enums\DriverStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 class Driver extends Model
 {
     use HasFactory;
 
-    public static function byUser(User $user): self
+    public function scopeIsDriver($query, User $user)
     {
-        return self::query()->findOrFail($user->id);
-    }
-
-    public static function isDriver(User $user): bool
-    {
-        return self::query()->where("id", $user->id)->exists();
+        return $query->where("id", $user->id);
     }
 
     public $incrementing = false;
