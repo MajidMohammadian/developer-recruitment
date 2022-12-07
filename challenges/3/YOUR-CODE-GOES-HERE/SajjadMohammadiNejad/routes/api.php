@@ -7,10 +7,13 @@ use App\Http\Controllers\TravelSpotController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
+// If a group of routes all utilize the same controller, you may use the controller method to define the common controller for all of the routes within the group.
+Route::controller(AuthController::class)->group(function () {
+    Route::post("/register", "register");
+    Route::post("/login",  "login");
+});
 
-Route::post("/register", [AuthController::class, "register"]);
-
-Route::middleware("auth:sanctum")->group(function(Router $router) {
+Route::middleware("auth:sanctum")->group(function (Router $router) {
     $router->get("/user", [AuthController::class, "user"]);
 
     $router->post("/travels", [TravelController::class, "store"]);
