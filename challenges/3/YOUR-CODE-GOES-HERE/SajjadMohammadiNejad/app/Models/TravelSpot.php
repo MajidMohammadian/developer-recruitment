@@ -10,8 +10,18 @@ class TravelSpot extends Model
     use HasFactory;
 
     protected $table = "travels_spots";
-
-    public function travel() {
+    /**
+     * @var string[]
+     */
+    protected $fillable = [
+        'id',
+        'position',
+        'arrived_at',
+        'latitude',
+        'longitude',
+    ];
+    public function travel()
+    {
         return $this->belongsTo(Travel::class);
     }
 }

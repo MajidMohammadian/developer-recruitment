@@ -12,6 +12,14 @@ class TravelEvent extends Model
 
     use HasFactory;
 
+    /**
+     * @var string[]
+     */
+    protected $fillable = [
+        'id',
+        'travel_id',
+        'type',
+    ];
     protected $table = "travels_events";
     protected $casts = array(
         'type' => TravelEventType::class,
