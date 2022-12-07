@@ -19,6 +19,7 @@ class AuthController extends Controller
 	 */
 	public function register(RegisterRequest $request)
 	{
+		
 		//check user exists
 		$user = User::where('cellphone', $request->cellphone)->first();
 		if ($user) {

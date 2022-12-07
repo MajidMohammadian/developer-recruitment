@@ -49,7 +49,7 @@ class DriverController extends Controller
 	 */
 	public function update(DriverUpdateRequest $request)
 	{
-		$driver = Driver::byUser(auth()->user())->first();
+		$driver = Driver::findOrFail(auth()->user()->id);
 		if (!$driver) {
 			//if driver not found
 			return response()->json([

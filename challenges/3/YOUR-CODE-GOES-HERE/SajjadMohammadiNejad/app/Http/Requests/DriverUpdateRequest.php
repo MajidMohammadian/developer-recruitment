@@ -12,7 +12,7 @@ class DriverUpdateRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return Driver::isDriver($this->user());
+        return Driver::isDriver($this->user())->exists();
     }
 
     /**

@@ -36,6 +36,6 @@ class TravelPolicy
 
     public function take(User $user): bool
     {
-        return Driver::isDriver($user);
+        return Driver::isDriver($user)->exists();
     }
 }
